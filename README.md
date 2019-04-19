@@ -4,4 +4,5 @@
 Файлы, которые содержат написанный код находятся в папке `/src`: 
 * `App.js`
 * `Todoitem.js`
-* `Inputcomp.js`
+* `Inputcomp.js`  
+* `index.css`
