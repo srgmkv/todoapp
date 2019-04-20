@@ -46,6 +46,7 @@ class InputForm extends React.Component {
 			<>
 				<div id="add-field">
 					<div><input
+						autoComplete="off"
 						id="text-input" type="text"
 						placeholder={pHolder}
 						onKeyUp={this.handlePressKey}
