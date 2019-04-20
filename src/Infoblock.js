@@ -5,13 +5,13 @@ class InfoBlockOnLoad extends React.Component {
 	render() {
 		const InfoBlock = styled.div`
 			position: absolute;
-			background-color: rgba(244, 255, 89, 0.8);
+			background-color: rgba(0, 200, 0, 0.6);
 			width: 100%;
 			height: 60px;
 			z-index: 2;
 			text-align: center;
 			font-size: 1.2em;
-			color: royalblue;
+			color: rgb(1, 29, 116);
 			padding-top: 20px;
 			border-radius: 3px;
 			max-width: 400px;
@@ -23,7 +23,7 @@ class InfoBlockOnLoad extends React.Component {
 		const Plus = styled.span`
 			display: inline-block;
 			padding: 0px 3px;
-			background-color: rgb(255, 0, 0, 0.6);
+			background-color: rgb(255, 0, 0);
 			color: white;
 			vertical-align: middle;
 			margin: 0 3px;

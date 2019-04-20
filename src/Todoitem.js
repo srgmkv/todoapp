@@ -40,6 +40,6 @@ class TodoItem extends React.Component {
 export default TodoItem;
 
 //применяем способ статической типизации, проверяя, соответсвуют ли полученные даные из App нужному типу
-TodoItem.propTypes = {
+/*TodoItem.propTypes = {
 	item: PropTypes.object
-};
+};*/
