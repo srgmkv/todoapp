@@ -9,4 +9,4 @@
 * `Todoitem.js`
 * `index.css`
 
-Продакшн-версия ===> [здесь](https://srgmkv.github.io/todo-production/)
+Продакшн-версия ===> [здесь](https://srgmkv.github.io/todoapp/build/)
