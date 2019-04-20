@@ -45,8 +45,8 @@ class App extends React.Component {
 
 	//два метода ниже меняют состояние отображения поля для добавления пункта в список
 	toShowInput = () => {
-		this.setState({ isInputShown: true });
 		this.setState({ justloaded: false });
+		this.setState({ isInputShown: true});
 	};
 
 	toHideInput = () => this.setState({ isInputShown: false });
@@ -66,8 +66,9 @@ class App extends React.Component {
 		//убирающее поле ввода скрывалось
 		document.addEventListener('click', e => {
 			const id = e.target.id;
-			if (id !== 'add' && id !== 'text' && id !== 'okbutton'
-				&& id !== 'add-button') {
+			console.log(id)
+			if (id !== 'add-field' && id !== 'text-input' && id !== 'okbutton'
+				&& id !== 'add-button' && id !== 'plus') {
 				this.toHideInput();
 			};
 		});
@@ -88,12 +89,17 @@ class App extends React.Component {
 				item={item}
 				handleChange={this.handleChange}
 				delItem={this.delItem}
+
+						toShowInput={this.toShowInput}
 			/>
 		);
 
 		return (
 			<>
-			{this.state.justloaded && !this.state.todos.length && <Infoonload />}
+			{this.state.justloaded && !this.state.todos.length &&
+			<Infoonload 
+			toShowInput={this.toShowInput}
+			/>}
 				{//Показываем или убираем поле ввода, передавая ему данные и методы 
 					this.state.isInputShown &&
 					<Inputcomp
