@@ -4,8 +4,9 @@
 Приложение "Список дел" реализовано с использованием инструмента Create React App.  
 Файлы, которые содержат написанный код и стили находятся в папке `/src`: 
 * `App.js`
+* `Infoblock.js`
+* `Inputform.js`
 * `Todoitem.js`
-* `Inputcomp.js`  
 * `index.css`
 
 Продакшн-версия ===> [здесь](https://srgmkv.github.io/todo-production/)
