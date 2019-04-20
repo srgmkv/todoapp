@@ -1,158 +1,170 @@
 body {
-    background-color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 14px;
+	background-color: white;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
 }
 
 #main {
-    margin: auto;
-    width: 70%;
-    background-color: white;
-    border: 1px solid white;
+	max-width: 700px;
+	margin: auto;
+	background-color: white;
+	border: 1px solid white;
 }
 
 .list-disable {
-    pointer-events: none;
-    opacity: 0.1;
+	pointer-events: none;
+	opacity: 0.1;
 }
 
-#add-field {
-    display: block;
-    position: fixed;
-    top: 80px;
-    left: 15%;
-    width: 70%;
-    z-index: 9000;
-    min-width: 300px;
-    box-sizing: border-box;
-    border: 20px solid rgb(245, 245, 12, 0.8);
-    border-radius: 7px;
-}
-
-#add-field div:first-child {
-    float: left;
-    width: 90%;
-}
-
-#add-field div:last-child {
-    float: right;
-    width: 10%;
-}
-
-input[type="text"] {
-    padding: 5px;
-    border-radius: 3px;
-    font-size: 1.3em;
-    outline: 0;
-    border: 0;
-    width: 100%;
-}
-
-input[type="text"]::placeholder {
-    color: #a7a097;
-    font-size: 80%;
-}
-
-#okbutton {
-    padding: 5px;
-    margin-left: 5px;
-    outline: 0;
-    font-size: 1.3em;
-    border: 0;
-    width: 100%;
-    z-index: 99999;
-}
-
-#add div {
-    display: inline-block;
+#fixed {
+	position: fixed;
 }
 
 #add-button {
-    position: fixed;
-    left: 75px;
-    top: 15px;
-    padding: 15px 32px;
-    float: left;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 1.5em;
-    background-color: rgb(240, 79, 73);
-    border: none;
-    color: white;
+	position: fixed;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 2em;
+	background-color: rgb(240, 79, 73);
+	border: none;
+	color: white;
+	z-index: 2;
+	margin: 0;
 }
 
 #add-button:hover {
-    background-color: red
+	background-color: red
+}
+
+#header {
+	position: fixed;
+	text-align: center;
+	background-color: aqua;
+	height: 40px;
+	width: 100%;
+	font-size: 1.5em;
+	padding-top: 10px;
+	color: rgb(253, 0, 0);
+	text-shadow: 1px 1px 1px rgb(218, 211, 207);
+	max-width: 700px;
+}
+
+#add-field {
+	position: fixed;
+	top: 80px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	max-width: 700px;
+	z-index: 9000;
+	min-width: 300px;
+	box-sizing: border-box;
+	border: 20px solid rgb(245, 245, 12, 0.8);
+	border-radius: 7px;
+}
+
+#infoblock {
+	position: absolute;
+	background-color: rgba(244, 255, 89, 0.8);
+	width: 100%;
+	height: 60px;
+	z-index: 2;
+	text-align: center;
+	font-size: 1.2em;
+	color: royalblue;
+	padding-top: 20px;
+	border-radius: 3px;
+	max-width: 400px;
+	top: 60px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#infoblock span {
+	display: inline-block;
+	padding: 0px 3px;
+	background-color: red;
+	color: white;
+	vertical-align: middle;
+}
+
+#add-field div:first-child {
+	float: left;
+	width: 90%;
+}
+
+#add-field div:last-child {
+	float: right;
+	width: 10%;
+}
+
+input[type="text"] {
+	padding: 5px;
+	border-radius: 3px;
+	font-size: 1.3em;
+	outline: 0;
+	border: 0;
+	width: 100%;
+}
+
+input[type="text"]::placeholder {
+	color: #a7a097;
+	font-size: 80%;
+}
+
+#okbutton {
+	padding: 5px;
+	margin-left: 5px;
+	outline: 0;
+	font-size: 1.3em;
+	border: 0;
+	width: 100%;
+	z-index: 99999;
+}
+
+#add div {
+	display: inline-block;
 }
 
 .todo-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid #efefef;
-    padding: 10px;
-    border: 0;
+	display: flex;
+	flex-direction: column;
+	margin-top: 50px;
+	margin-left: 50px;
 }
 
 .todo-item {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 90%;
-    border-bottom: 1px solid #cecece;
-    font-family: Roboto, sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    color: #333333;
-}
-
-p {
-    margin-right: 10px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	border-bottom: 1px solid #cecece;
+	font-family: Roboto, sans-serif;
+	font-weight: 400;
+	font-size: 1.2em;
+	color: #333333;
+	padding: 0 5px;
 }
 
 input[type=checkbox] {
-    margin-right: 10px;
+	margin: 0 13px;
 }
 
 input[type=checkbox]:focus {
-    outline: 0;
+	outline: 0;
 }
 
-@media (min-width: 300px) and (max-width: 599px) {
-    #add-field {
-        top: 70px;
-        left: 0;
-        border-radius: 0;
-        width: 100%;
-        font-size: 0.9em;
-    }
-    #add-button {
-        left: 0;
-        top: 15px;
-        padding: 10px 20px;
-        font-size: 2em;
-    }
-    #main {
-        margin-left: 40px;
-        width: auto;
-    }
+@media (min-width: 640px) and (max-width: 768px) {
+	#add-field {
+		top: 0;
+	}
 }
 
-@media (min-width: 600px) and (max-width: 799px) {
-    #add-field {
-        top: 00px;
-        left: 0;
-        border-radius: 0;
-        width: 100%;
-    }
-    #add-button {
-        left: 0;
-        top: 0;
-        padding: 20px 30px;
-        font-size: 2em;
-    }
-    #main {
-        margin-left: 50px;
-        width: auto;
-    }
+@media (max-width: 500px) {
+	.todo-list {
+		margin-left: 0;
+	}
 }

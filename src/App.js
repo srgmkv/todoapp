@@ -2,13 +2,15 @@
 import React from 'react';
 import Todoitem from './Todoitem'; //Компонент рендерит пункт списка дел
 import Inputcomp from './Inputcomp'; //Компонент рендерит поле для добавления пункта в список
+import Infoonload from './Infoonload';
 
 class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
 			todos: [], //Здесь будем хранить список дел в виде массива объектов
-			isInputShown: false //Здесь - состояние поля для добавления
+			isInputShown: false, //Здесь - состояние поля для добавления
+			justloaded: false
 		};
 	};
 
@@ -38,10 +40,14 @@ class App extends React.Component {
 			});
 		this.setState({ todos: updatedTodos });
 		localStorage.setItem('todoDataInLS', JSON.stringify(updatedTodos));
+		this.setState({ justloaded: false });
 	};
 
 	//два метода ниже меняют состояние отображения поля для добавления пункта в список
-	toShowInput = () => this.setState({ isInputShown: true });
+	toShowInput = () => {
+		this.setState({ isInputShown: true });
+		this.setState({ justloaded: false });
+	};
 
 	toHideInput = () => this.setState({ isInputShown: false });
 
@@ -50,6 +56,11 @@ class App extends React.Component {
 		//подгружаем список дел в состояние из localStorage
 		const updTodos = JSON.parse(localStorage.getItem('todoDataInLS'));
 		this.setState({ todos: updTodos }); 
+		this.setState({ justloaded: true });
+
+		/*if (!updTodos.length) {
+			this.setState({ isInputShown: true });
+			}*/
 		
 		//вешаем обработчики событий на клики мыши вне поля ввода пункта и на нажатие клавиши Esc,
 		//убирающее поле ввода скрывалось
@@ -82,6 +93,7 @@ class App extends React.Component {
 
 		return (
 			<>
+			{this.state.justloaded && !this.state.todos.length && <Infoonload />}
 				{//Показываем или убираем поле ввода, передавая ему данные и методы 
 					this.state.isInputShown &&
 					<Inputcomp
@@ -92,10 +104,14 @@ class App extends React.Component {
 						toHideInput={this.toHideInput}
 					/>
 				}
+				
 				<div id="main"
 					//делаем область страницы неактивной под полем ввода
-					className={this.state.isInputShown ? 'list-disable' : undefined}
-				><button id="add-button" onClick={this.toShowInput}>+</button>
+					className={this.state.isInputShown ? 'list-disable' : undefined}>
+						
+						<button id="add-button" onClick={this.toShowInput}>+</button>
+						<div id="header">Мой список дел</div>
+						
 					<div className="todo-list" /* здесь отобразим элементы списка дела */>
 						{todoList} 
 					</div>
