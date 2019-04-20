@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 //Данный компонент рендерит поле для ввода пункта в список дел
-class InputComponent extends React.Component {
+class InputForm extends React.Component {
 	constructor() {
 		super();
 		this.input = React.createRef(); //получаем ссылку на поле ввода
@@ -58,9 +58,9 @@ class InputComponent extends React.Component {
 	};
 };
 
-export default InputComponent;
+export default InputForm;
 
 //применяем способ статической типизации, проверяя, соответсвуют ли полученные даные из App нужному типу
-InputComponent.propTypes = {
+InputForm.propTypes = {
 	state: PropTypes.object
 };

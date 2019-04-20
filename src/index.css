@@ -53,20 +53,6 @@ body {
 	max-width: 700px;
 }
 
-#add-field {
-	position: fixed;
-	top: 80px;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 100%;
-	max-width: 700px;
-	z-index: 9000;
-	min-width: 300px;
-	box-sizing: border-box;
-	border: 20px solid rgb(245, 245, 12, 0.8);
-	border-radius: 7px;
-}
-
 #infoblock {
 	position: absolute;
 	background-color: rgba(244, 255, 89, 0.8);
@@ -90,6 +76,20 @@ body {
 	background-color: red;
 	color: white;
 	vertical-align: middle;
+}
+
+#add-field {
+	position: fixed;
+	top: 80px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	max-width: 700px;
+	z-index: 9000;
+	min-width: 300px;
+	box-sizing: border-box;
+	border: 20px solid rgb(245, 245, 12, 0.8);
+	border-radius: 7px;
 }
 
 #add-field div:first-child {
@@ -124,10 +124,6 @@ input[type="text"]::placeholder {
 	border: 0;
 	width: 100%;
 	z-index: 99999;
-}
-
-#add div {
-	display: inline-block;
 }
 
 .todo-list {

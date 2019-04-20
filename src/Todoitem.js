@@ -12,13 +12,12 @@ class TodoItem extends React.Component {
 		};
 		//Используем styled-components для создания стилизованного компонента, отобрающего кнопку Удалить
 		const Remove = styled.div`
-			font-size: 0.9em;
-			padding:0 2px;
-			color: red;
-			border: 1px dotted red;
-			border-radius: 25%;
+			color: #d00;
+			font-size: 1.45em;
+			font-weight: bold;
+			line-height: 1;
 			margin-left: auto;
-			cursor: pointer;
+			padding-right: 5px;
 		`;
 
 		return (
@@ -31,7 +30,7 @@ class TodoItem extends React.Component {
 				/><label htmlFor={this.props.item.id}>
 					<p style={this.props.item.completed ? completedStyle : null}>{this.props.item.text}</p>
 				</label>
-				<Remove onClick={() => this.props.delItem(this.props.item.id)}>x</Remove>
+				<Remove onClick={() => this.props.delItem(this.props.item.id)}>&times;</Remove>
 			</div>
 		)
 	}

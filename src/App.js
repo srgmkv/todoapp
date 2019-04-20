@@ -1,8 +1,8 @@
 
 import React from 'react';
 import Todoitem from './Todoitem'; //Компонент рендерит пункт списка дел
-import Inputcomp from './Inputcomp'; //Компонент рендерит поле для добавления пункта в список
-import Infoonload from './Infoonload';
+import Inputform from './Inputform'; //Компонент рендерит поле для добавления пункта в список
+import Infoblock from './Infoblock'; //Рендерит инфоблок
 
 class App extends React.Component {
 	constructor() {
@@ -10,7 +10,7 @@ class App extends React.Component {
 		this.state = {
 			todos: [], //Здесь будем хранить список дел в виде массива объектов
 			isInputShown: false, //Здесь - состояние поля для добавления
-			justloaded: false
+			justloaded: false //состояни определяет загрузку инфоблока
 		};
 	};
 
@@ -43,10 +43,10 @@ class App extends React.Component {
 		this.setState({ justloaded: false });
 	};
 
-	//два метода ниже меняют состояние отображения поля для добавления пункта в список
+	//два метода ниже меняют состояние для отображения/скрытия поля ввода и ифноблока 
 	toShowInput = () => {
 		this.setState({ justloaded: false });
-		this.setState({ isInputShown: true});
+		this.setState({ isInputShown: true });
 	};
 
 	toHideInput = () => this.setState({ isInputShown: false });
@@ -55,18 +55,12 @@ class App extends React.Component {
 	componentDidMount() {
 		//подгружаем список дел в состояние из localStorage
 		const updTodos = JSON.parse(localStorage.getItem('todoDataInLS'));
-		this.setState({ todos: updTodos }); 
+		this.setState({ todos: updTodos });
 		this.setState({ justloaded: true });
 
-		/*if (!updTodos.length) {
-			this.setState({ isInputShown: true });
-			}*/
-		
-		//вешаем обработчики событий на клики мыши вне поля ввода пункта и на нажатие клавиши Esc,
-		//убирающее поле ввода скрывалось
+		//вешаем обработчики на клики вне поля ввода и на нажатие клавиши Esc,
 		document.addEventListener('click', e => {
 			const id = e.target.id;
-			console.log(id)
 			if (id !== 'add-field' && id !== 'text-input' && id !== 'okbutton'
 				&& id !== 'add-button' && id !== 'plus') {
 				this.toHideInput();
@@ -90,19 +84,20 @@ class App extends React.Component {
 				handleChange={this.handleChange}
 				delItem={this.delItem}
 
-						toShowInput={this.toShowInput}
+				toShowInput={this.toShowInput}
 			/>
 		);
 
 		return (
 			<>
-			{this.state.justloaded && !this.state.todos.length &&
-			<Infoonload 
-			toShowInput={this.toShowInput}
-			/>}
+				{//Показываем инфоблок сразу после загрузки и пустом списке
+					this.state.justloaded && !this.state.todos.length &&
+					<Infoblock
+						toShowInput={this.toShowInput}
+					/>}
 				{//Показываем или убираем поле ввода, передавая ему данные и методы 
 					this.state.isInputShown &&
-					<Inputcomp
+					<Inputform
 						addTolist={this.addTolist}
 						handlePressKey={this.handleChange}
 						state={this.state}
@@ -110,16 +105,16 @@ class App extends React.Component {
 						toHideInput={this.toHideInput}
 					/>
 				}
-				
+
 				<div id="main"
 					//делаем область страницы неактивной под полем ввода
 					className={this.state.isInputShown ? 'list-disable' : undefined}>
-						
-						<button id="add-button" onClick={this.toShowInput}>+</button>
-						<div id="header">Мой список дел</div>
-						
+
+					<button id="add-button" onClick={this.toShowInput}>+</button>
+					<div id="header">Мой список дел</div>
+
 					<div className="todo-list" /* здесь отобразим элементы списка дела */>
-						{todoList} 
+						{todoList}
 					</div>
 				</div >
 			</>
