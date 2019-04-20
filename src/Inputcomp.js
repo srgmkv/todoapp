@@ -40,7 +40,7 @@ class InputComponent extends React.Component {
 	}
 
 	render() {
-		const pHolder = "Type here task to do, then click Enter or + ";
+		const pHolder = "Type here task to do, then press Enter or OK ";
 
 		return (
 			<>

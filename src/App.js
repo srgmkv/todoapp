@@ -47,12 +47,10 @@ class App extends React.Component {
 
 	//перед рендерингом компонента(при загрузке страницы):
 	componentDidMount() {
-		//подгружаем список дел из localStorage, если там не пусто
+		//подгружаем список дел в состояние из localStorage
 		const updTodos = JSON.parse(localStorage.getItem('todoDataInLS'));
-		if (updTodos) {
-			this.setState({ todos: updTodos });
-		}
-
+		this.setState({ todos: updTodos }); 
+		
 		//вешаем обработчики событий на клики мыши вне поля ввода пункта и на нажатие клавиши Esc,
 		//убирающее поле ввода скрывалось
 		document.addEventListener('click', e => {
