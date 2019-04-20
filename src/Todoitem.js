@@ -18,6 +18,7 @@ class TodoItem extends React.Component {
 			line-height: 1;
 			margin-left: auto;
 			padding-right: 5px;
+			cursor: pointer;
 		`;
 
 		return (

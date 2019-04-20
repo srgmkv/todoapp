@@ -55,7 +55,7 @@ class App extends React.Component {
 	componentDidMount() {
 		//подгружаем список дел в состояние из localStorage
 		const updTodos = JSON.parse(localStorage.getItem('todoDataInLS'));
-		this.setState({ todos: updTodos });
+		if (updTodos) this.setState({ todos: updTodos });
 		this.setState({ justloaded: true });
 
 		//вешаем обработчики на клики вне поля ввода и на нажатие клавиши Esc,

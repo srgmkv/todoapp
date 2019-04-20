@@ -28,14 +28,16 @@ class InfoBlockOnLoad extends React.Component {
 			vertical-align: middle;
 			margin: 0 3px;
 			cursor: pointer;
+			border-radius: 2px;
+			padding: 2px 6px;
 		`;
 
 		return (
 			<>
 				<InfoBlock  >
-					Для добавления пункта в список дел нажмите кнопку
+					Для добавления задачи в список дел нажмите кнопку
 					<Plus id="plus" onClick={this.props.toShowInput}>+</Plus>
-					слева вверху
+					 или слева вверху
 				</InfoBlock>
 			</>
 		)
