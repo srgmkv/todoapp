@@ -7,12 +7,10 @@ class InfoBlockOnLoad extends React.Component {
 			position: absolute;
 			background-color: rgba(0, 200, 0, 0.6);
 			width: 100%;
-			height: 60px;
-			z-index: 2;
 			text-align: center;
 			font-size: 1.2em;
 			color: rgb(1, 29, 116);
-			padding-top: 20px;
+			padding: 20px 0 20px;
 			border-radius: 3px;
 			max-width: 400px;
 			top: 60px;
@@ -37,7 +35,7 @@ class InfoBlockOnLoad extends React.Component {
 				<InfoBlock  >
 					Для добавления задачи в список дел нажмите кнопку
 					<Plus id="plus" onClick={this.props.toShowInput}>+</Plus>
-					 или слева вверху
+					 слева вверху
 				</InfoBlock>
 			</>
 		)
