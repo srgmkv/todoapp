@@ -2,7 +2,7 @@
 import React from 'react';
 import Todoitem from './Todoitem'; //Компонент рендерит пункт списка дел
 import Inputform from './Inputform'; //Компонент рендерит поле для добавления пункта в список
-import Infoblock from './Infoblock'; //Рендерит инфоблок
+import Infoblock from './Infoblock'; //Рендерит инфоблок при загрузке пустого списка
 
 class App extends React.Component {
 	constructor() {
@@ -10,12 +10,21 @@ class App extends React.Component {
 		this.state = {
 			todos: [], //Здесь будем хранить список дел в виде массива объектов
 			isInputShown: false, //Здесь - состояние поля для добавления
-			justloaded: false //состояни определяет загрузку инфоблока
+			justloaded: false, //состояни определяет загрузку инфоблока
+			inputState: null, //состояние определяет дл конторлируемого инпута
+			uniqId: null // сюда будем генерировать уникальный id для свойства key компонента
 		};
 	};
 
 	//данным методом будем менять состояние списка дел из дочерних компонентов
-	toSetNewState = (array) => this.setState({ todos: array });
+	toSetTodosState = (array) => this.setState({ todos: array });
+
+	//делаем инпут контролируемым (затем передадим метод в компонент инпута)
+	toSetInputState = (e) =>
+		typeof e === 'object' ? this.setState({ inputState: e.target.value }) :
+			this.setState({ inputState: null });
+
+
 
 	//метод обратывает клик на пункт списка, меняет его состояние сделано/не_сделано
 	handleChange = (id) => {
@@ -44,9 +53,10 @@ class App extends React.Component {
 	};
 
 	//два метода ниже меняют состояние для отображения/скрытия поля ввода и ифноблока 
-	toShowInput = () => {
+	toShowInput = (e) => {
 		this.setState({ justloaded: false });
 		this.setState({ isInputShown: true });
+		e.nativeEvent.stopImmediatePropagation();//останавливаем всплытие, дабы не запустить обработчик *X* 
 	};
 
 	toHideInput = () => this.setState({ isInputShown: false });
@@ -58,20 +68,11 @@ class App extends React.Component {
 		if (updTodos) this.setState({ todos: updTodos });
 		this.setState({ justloaded: true });
 
-		//вешаем обработчики на клики вне поля ввода и на нажатие клавиши Esc,
-		document.addEventListener('click', e => {
-			const id = e.target.id;
-			if (id !== 'add-field' && id !== 'text-input' && id !== 'okbutton'
-				&& id !== 'add-button' && id !== 'plus') {
-				this.toHideInput();
-			};
-		});
+		//вешаем обработчики на клики вне поля ввода и на нажатие клавиши Esc, убирающий поле ввода
+		document.addEventListener('click', () => this.toHideInput()); // *X*
 
-		document.addEventListener('keyup', e => {
-			if (e.key === "Escape") {
-				this.toHideInput();
-			};
-		});
+		document.addEventListener('keyup', e => e.key === 'Escape' && this.toHideInput());
+
 	};
 
 	render() {
@@ -79,11 +80,10 @@ class App extends React.Component {
 		//передавая компоненту данные и методы из родителя в виде свойст
 		const todoList = this.state.todos.map(
 			item => <Todoitem
-				key={item.id}
+				key={item.uniqId}
 				item={item}
 				handleChange={this.handleChange}
 				delItem={this.delItem}
-
 				toShowInput={this.toShowInput}
 			/>
 		);
@@ -101,8 +101,9 @@ class App extends React.Component {
 						addTolist={this.addTolist}
 						handlePressKey={this.handleChange}
 						state={this.state}
-						toSetNewState={this.toSetNewState}
+						toSetTodosState={this.toSetTodosState}
 						toHideInput={this.toHideInput}
+						toSetInputState={this.toSetInputState}
 					/>
 				}
 

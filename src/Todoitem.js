@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-
 class TodoItem extends React.Component {
 	render() {
 		//объект со стилями для изменения вида пункта списка при переключении true/false
@@ -38,8 +36,3 @@ class TodoItem extends React.Component {
 };
 
 export default TodoItem;
-
-//применяем способ статической типизации, проверяя, соответсвуют ли полученные даные из App нужному типу
-/*TodoItem.propTypes = {
-	item: PropTypes.object
-};*/
