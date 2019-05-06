@@ -9,4 +9,5 @@
 * `Todoitem.js`
 * `index.css`
 
-Продакшн-версия ===> [здесь](https://srgmkv.github.io/todoapp/build/)
+Продакшн-версия ===> [здесь](https://srgmkv.github.io/todoapp/build/)  
+Верстка адаптивная.
